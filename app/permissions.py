@@ -29,6 +29,7 @@ class GlobalDefaultPermission(permissions.BasePermission):
             'POST': 'add',
             'PUT': 'change',
             'PATCH': 'change',
-            'DELETE': 'delete'
+            'DELETE': 'delete',
+            'OPTIONS': 'view',
         }
         return method_actions.get(method, '')
