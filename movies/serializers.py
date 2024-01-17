@@ -1,9 +1,20 @@
 from rest_framework import serializers
 from django.db.models import Avg
+from actors.serializers import ActorSerializer
+from genres.serializers import GenreSerializer
 from movies.models import Movie
 
 
 class MovieSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Movie
+        fields = '__all__'
+
+
+class MovieListDetailSerializer(serializers.ModelSerializer):
+    actors = ActorSerializer(many=True)
+    genre = GenreSerializer()
     rate = serializers.SerializerMethodField()
 
     class Meta:
